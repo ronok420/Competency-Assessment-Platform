@@ -7,7 +7,8 @@ const UserSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: false },
+    password: { type: String, required: true },
+    phoneNumber: { type: String, required: false },
   
     dob: { type: Date, default: null },
     role: {
@@ -34,6 +35,16 @@ const UserSchema = new mongoose.Schema(
     refreshToken: {
       type: String,
       default: ''
+    },
+    // --- NEW FIELD ADDED ---
+    // This object tracks the user's overall assessment state permanently.
+    assessmentStatus: {
+      // 'NotStarted', 'InProgress', 'Failed', 'Completed'
+      status: { type: String, default: 'NotStarted', required: true },
+      // Stores the highest level achieved, e.g., 'A1', 'B2', 'C2'
+      finalLevel: { type: String, default: null },
+      // Reference to the certificate if one was issued
+      certificateId: { type: mongoose.Schema.Types.ObjectId, ref: 'Certificate', default: null },
     }
      
   },
@@ -70,6 +81,9 @@ UserSchema.methods.generateAccessToken = function (payload) {
 UserSchema.methods.generateRefreshToken = function (payload) {
   return jwt.sign(payload, refreshTokenSecrete, { expiresIn: refreshTokenExpires });
 };
+
+// Index for faster gating/filtering by assessment status
+UserSchema.index({ 'assessmentStatus.status': 1 });
 
 const User = mongoose.models.User || mongoose.model('User', UserSchema);
 export default User;

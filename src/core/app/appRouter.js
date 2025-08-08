@@ -1,12 +1,16 @@
 import express from 'express';
 import authRoutes from '../../entities/auth/auth.routes.js';
 import userRoutes from '../../entities/user/user.routes.js';
+import competencyRoutes from '../../entities/competency/competency.routes.js';
+import questionRoutes from '../../entities/question/question.routes.js';
 //import dashboardRoutes from '../../entities/dashboard/dashboard.routes.js';
 
 const router = express.Router();
 
 router.use('/v1/auth', authRoutes);
 router.use('/v1/user', userRoutes);
+router.use('/v1/competencies', competencyRoutes);
+router.use('/v1/questions', questionRoutes);
 //router.use('/v1/admin/dashboard', dashboardRoutes);
 
 export default router;

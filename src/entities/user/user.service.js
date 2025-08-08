@@ -35,18 +35,18 @@ export const getAllAdmins = async ({ page = 1, limit = 10, search, date }) => {
 };
 
 
-// Get all sellers 
+// Get all SUPERVISORS 
 export const getAllSupervisors = async ({ page = 1, limit = 10, search, date }) => {
   const filter = createFilter(search, date);
-  const totalSellers = await User.countDocuments({ ...filter, role: RoleType.SELLER });
-  const sellers = await User.find({ ...filter, role: RoleType.SELLER })
+  const totalSupervisors = await User.countDocuments({ ...filter, role: RoleType.SUPERVISOR });
+  const supervisors = await User.find({ ...filter, role: RoleType.SUPERVISOR })
     .select("-password -createdAt -updatedAt -__v -verificationCode -verificationCodeExpires")
     .sort({ createdAt: -1 })
     .skip((page - 1) * limit)
     .limit(limit);
 
-  const paginationInfo = createPaginationInfo(page, limit, totalSellers);
-  return { sellers, paginationInfo };
+  const paginationInfo = createPaginationInfo(page, limit, totalSupervisors);
+  return { supervisors, paginationInfo };
 };
 
 
