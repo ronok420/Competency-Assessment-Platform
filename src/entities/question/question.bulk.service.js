@@ -2,10 +2,33 @@ import Question from './question.model.js';
 import Competency from '../competency/competency.model.js';
 import { buildBulkResult, pushBulkError, applyBulkWriteErrors } from '../../utils/bulk.js';
 import { readJsonFile, extractItemsArray } from '../../utils/json.js';
+import { parseCsvFileToObjects } from '../../utils/csv.js';
 
 export const parseBulkQuestionsJsonFile = async (filePath) => {
   const parsed = await readJsonFile(filePath);
   return extractItemsArray(parsed);
+};
+
+export const parseBulkQuestionsCsvFile = async (filePath) => {
+  // Expected headers: competencyCode,level,text,optionsA,optionsB,optionsC,optionsD,correctOptionKey,isActive
+  // optionsA..D are labels, keys are A,B,C,D respectively
+  const records = await parseCsvFileToObjects(filePath);
+  return records.map((r) => {
+    const options = [];
+    if (r.optionsA) options.push({ key: 'A', label: r.optionsA });
+    if (r.optionsB) options.push({ key: 'B', label: r.optionsB });
+    if (r.optionsC) options.push({ key: 'C', label: r.optionsC });
+    if (r.optionsD) options.push({ key: 'D', label: r.optionsD });
+    const isActive = r.isActive === undefined || r.isActive === '' ? true : String(r.isActive).toLowerCase() === 'true';
+    return {
+      competencyCode: r.competencyCode,
+      level: r.level,
+      text: r.text,
+      options,
+      correctOptionKey: r.correctOptionKey,
+      isActive,
+    };
+  });
 };
 
 export const bulkCreateQuestions = async (items = []) => {

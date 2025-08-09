@@ -1,0 +1,134 @@
+competencyCode,level,text,optionsA,optionsB,optionsC,optionsD,correctOptionKey,isActive
+"JS_CORE","A1","What is JavaScript primarily used for in web pages?","Adding interactivity","Designing server racks","Configuring routers","Installing databases","A",true
+"JS_CORE","A2","Which environment natively runs JavaScript?","Web browser","Excel only","Photoshop only","BIOS","A",true
+"JS_CORE","B1","Which statement declares a block-scoped variable?","let","var","def","const var","A",true
+"JS_CORE","B2","Which of these is a primitive type in JavaScript?","Symbol","Array","Date","RegExp","A",true
+"JS_CORE","C1","Which best describes JavaScript's typing discipline?","Dynamically typed","Statically typed","Untyped","Dependent typed","A",true
+"JS_CORE","C2","Which execution model feature explains order of JS operations?","Single-threaded event loop","Multi-threaded preemptive","Kernel-level threads","Purely synchronous","A",true
+"JS_TYPES","A1","Which value is a string in JavaScript?","'Hello'","42","true","null","A",true
+"JS_TYPES","A2","What is the result of typeof 42?","'number'","'string'","'object'","'boolean'","A",true
+"JS_TYPES","B1","Which converts a string '123' to a number?","Number('123')","parseBool('123')","String(123)","Boolean('123')","A",true
+"JS_TYPES","B2","Which is NOT a falsy value?","'0'","0","NaN","'' (empty string)","A",true
+"JS_TYPES","C1","What does Object.is(NaN, NaN) return?","true","false","Throws","undefined","A",true
+"JS_TYPES","C2","Which best explains 'boxed' primitives?","Primitives temporarily wrapped with object types for method access","Objects converted to primitives permanently","Memory-mapped arrays","Weak references","A",true
+"JS_OPERATORS","A1","Which operator concatenates strings?","+","-","*","/","A",true
+"JS_OPERATORS","A2","Which operator checks strict equality?","===","==","=","!==","A",true
+"JS_OPERATORS","B1","What does '??' do?","Nullish coalescing","Logical AND","Bitwise XOR","Exponentiation","A",true
+"JS_OPERATORS","B2","What is the result of '5' - 2?","3","'52'","'3'","NaN","A",true
+"JS_OPERATORS","C1","Which operator has higher precedence than '||'?","&&","||","? :",", (comma)","A",true
+"JS_OPERATORS","C2","Which statement about '==' vs '===' is correct?","'===' does no type coercion; '==' may coerce","Both always coerce","Both never coerce","'==' is stricter than '==='","A",true
+"JS_CONTROL_FLOW","A1","Which keyword starts a conditional block?","if","when","cond","case","A",true
+"JS_CONTROL_FLOW","A2","Which loop runs a fixed number of times with counter?","for","during","repeat","loop","A",true
+"JS_CONTROL_FLOW","B1","Which breaks out of a loop?","break","stop","exit()","returnLoop","A",true
+"JS_CONTROL_FLOW","B2","Which continues to next iteration?","continue","skip","pass","next()","A",true
+"JS_CONTROL_FLOW","C1","Which statement labels can be used with?","break/continue","try/catch","import","with","A",true
+"JS_CONTROL_FLOW","C2","Which is true about switch statements?","They compare by strict equality (===) in JS","They use assignment","They are asynchronous","They only support numbers","A",true
+"JS_FUNCTIONS_SCOPE","A1","Which defines a function?","function greet(){}","fn greet => {}","def greet(){}","func greet {}","A",true
+"JS_FUNCTIONS_SCOPE","A2","Which arrow function returns 5?","() => 5","=> 5","() -> 5","() => {5}","A",true
+"JS_FUNCTIONS_SCOPE","B1","Where do variables declared with let exist?","Block scope","Function scope only","Global only","Module only","A",true
+"JS_FUNCTIONS_SCOPE","B2","What does closure capture?","Outer lexical environment","Network state","GPU buffers","Kernel modules","A",true
+"JS_FUNCTIONS_SCOPE","C1","'this' in an arrow function is:","Lexically bound","Dynamically bound","Global always","Undefined always","A",true
+"JS_FUNCTIONS_SCOPE","C2","Default parameters are evaluated:","At call time when parameter is undefined","At parse time","Only once per program","Never","A",true
+"JS_ARRAYS","A1","Which adds an item to the end of an array?","push","end","appendTo","insertLast","A",true
+"JS_ARRAYS","A2","Which returns the length of an array arr?","arr.length","len(arr)","arr.size()","arr.count","A",true
+"JS_ARRAYS","B1","Which creates a new array from mapping?","map","forEach","pushEach","iterate","A",true
+"JS_ARRAYS","B2","Which method does NOT mutate the original array?","slice","splice","reverse","sort","A",true
+"JS_ARRAYS","C1","What does Array.from do?","Creates an array from iterable/array-like","Freezes an array","Clears an array","Creates a Set","A",true
+"JS_ARRAYS","C2","Which ensures deep immutability of nested arrays?","Use structured cloning or libraries; Object.freeze is shallow","Object.freeze deeply","const prevents changes","map makes immutable","A",true
+"JS_OBJECTS_PROTOS","A1","Which creates an empty object literal?","{}","[]","()","<>","A",true
+"JS_OBJECTS_PROTOS","A2","How to read property x of object o?","o.x","o->x","o:x","o(x)","A",true
+"JS_OBJECTS_PROTOS","B1","What does Object.assign do?","Copies properties to target","Clones deeply","Freezes object","Deletes properties","A",true
+"JS_OBJECTS_PROTOS","B2","Which links an object's prototype?","Object.create(proto)","new Object(proto)","setPrototypeOf(null)","proto.link()","A",true
+"JS_OBJECTS_PROTOS","C1","Which is true about class in JS?","Syntactic sugar over prototypes","New runtime type","Removes prototypes","Makes JS static","A",true
+"JS_OBJECTS_PROTOS","C2","Which prevents adding new properties?","Object.seal (prevents config/delete, allows write) / Object.freeze (full immutability)","Object.assign","Object.map","Object.cloneDeep","A",true
+"JS_ESNEXT","A1","Which syntax inserts variables into strings?","Template literals","XML literals","Heredocs","Printf","A",true
+"JS_ESNEXT","A2","Which spreads array elements into a call?","... (spread)","** (power)",":: (bind)","@@ (decorator)","A",true
+"JS_ESNEXT","B1","Which extracts properties into variables?","Destructuring","Pattern matching (proposed)","Ref assignment","Hoisting","A",true
+"JS_ESNEXT","B2","Which creates an iterator producing values on demand?","Generator function","async function","class","macro","A",true
+"JS_ESNEXT","C1","Which is true about Symbols?","They create unique property keys","They are numbers","They are JSON serializable by default","They auto-convert to strings","A",true
+"JS_ESNEXT","C2","Which is correct about iterables vs iterators?","Iterables have [Symbol.iterator]; iterators have next()","Both are arrays","Iterators are DOM only","Iterables cannot be spread","A",true
+"JS_MODULES","A1","Which imports a default export?","import x from 'mod'","import {x} from 'mod'","require(x)","load x","A",true
+"JS_MODULES","A2","Which exports a named function foo?","export function foo(){}","exports: foo","module.export foo","export:foo()","A",true
+"JS_MODULES","B1","Which statement about ESM is true?","Static structure known at parse time","Dynamic require by default","No tree-shaking possible","Circular imports forbidden by spec","A",true
+"JS_MODULES","B2","Which loads an entire module namespace?","import * as Utils from 'utils'","import ** from 'utils'","import all 'utils'","module('utils').all","A",true
+"JS_MODULES","C1","Which is correct about top-level await?","Allowed in modules under certain environments","Only allowed in scripts","Always blocks the event loop forever","Not part of JS","A",true
+"JS_MODULES","C2","Which resolves bare specifiers in browsers today?","Import maps / bundlers","Native by default everywhere","Only Node core","AMD loader","A",true
+"JS_ERRORS_DEBUG","A1","Which starts a try/catch?","try { ... } catch(e) { ... }","attempt { } rescue(e) { }","try:catch","guard { }","A",true
+"JS_ERRORS_DEBUG","A2","Which logs to console?","console.log('hi')","print('hi')","puts 'hi'","logger('hi')","A",true
+"JS_ERRORS_DEBUG","B1","Which error type indicates a coding mistake at parse time?","SyntaxError","TypeError","RangeError","ReferenceError","A",true
+"JS_ERRORS_DEBUG","B2","Which statement is useful for debugging in devtools?","debugger;","halt;","pause();","breakpoint();","A",true
+"JS_ERRORS_DEBUG","C1","Which is a good practice for error handling in async code?","Use try/catch around await and handle rejections","Ignore rejections","Swallow errors silently","Always crash","A",true
+"JS_ERRORS_DEBUG","C2","Which preserves stack traces across async boundaries best?","Native async/await with proper error propagation","Manual callbacks only","console.error everywhere","setTimeout wrappers","A",true
+"JS_ASYNC","A1","Which schedules a function after delay?","setTimeout","runLater","delay()","wait()","A",true
+"JS_ASYNC","A2","Which represents a future value?","Promise","Tuple","Socket","Symbol","A",true
+"JS_ASYNC","B1","Which converts callback APIs into Promise-based?","promisify (concept)/wrapping","callbackify","thennify","awaitify","A",true
+"JS_ASYNC","B2","Which syntax waits for a Promise?","await","stop","pause","hold","A",true
+"JS_ASYNC","C1","Which handles multiple promises and waits for all?","Promise.all","Promise.one","Promise.anyOnly","Promise.last","A",true
+"JS_ASYNC","C2","Which returns first fulfilled promise, ignoring rejections?","Promise.any","Promise.allSettled","Promise.all","Promise.race","A",true
+"JS_PROMISES_ASYNC","A1","How to create a resolved Promise of 1?","Promise.resolve(1)","new Promise.reject(1)","Promise()","await 1","A",true
+"JS_PROMISES_ASYNC","A2","Which attaches a handler for fulfillment?","then","catch","finally","done","A",true
+"JS_PROMISES_ASYNC","B1","Which ensures cleanup after promise settles?","finally","always","defer","clear","A",true
+"JS_PROMISES_ASYNC","B2","Which turns multiple then chains into sequential async code?","async/await","callbacks","promisify","defer","A",true
+"JS_PROMISES_ASYNC","C1","Which statement is true about unhandled rejections?","They should be handled to avoid process warnings/crashes","They are harmless","They auto-retry","They convert to success","A",true
+"JS_PROMISES_ASYNC","C2","Which API waits for all promises to settle regardless of outcome?","Promise.allSettled","Promise.race","Promise.any","Promise.all","A",true
+"JS_EVENT_LOOP","A1","Which queue runs after call stack is empty?","Task (macrotask) queue","GPU queue","IOCTL queue","Kernel ring","A",true
+"JS_EVENT_LOOP","A2","Which runs before rendering in browsers?","Microtasks","Audio thread","Bluetooth","DMA","A",true
+"JS_EVENT_LOOP","B1","Which schedules a microtask?","queueMicrotask","setInterval","requestAnimationFrame","postMessage","A",true
+"JS_EVENT_LOOP","B2","Which API schedules work for next paint?","requestAnimationFrame","setImmediate","setTimeout(0)","Promise.resolve().then","A",true
+"JS_EVENT_LOOP","C1","Which ordering is typical: microtasks vs timers?","Microtasks run before timers of the same turn","Timers before microtasks","Random","Undefined","A",true
+"JS_EVENT_LOOP","C2","Which is true about starvation with microtasks?","Unbounded microtasks can starve rendering","Microtasks never affect rendering","They preempt paints","They run in parallel","A",true
+"JS_DOM","A1","Which selects an element by id?","document.getElementById('x')","document.pick('x')","window.id('x')","dom.query('x')","A",true
+"JS_DOM","A2","Which creates a new div element?","document.createElement('div')","new DOM('div')","DOM.create('div')","document.make('div')","A",true
+"JS_DOM","B1","Which inserts as last child of node?","appendChild","attach","insertLast","addChild","A",true
+"JS_DOM","B2","Which reads or sets HTML content of an element?","innerHTML","outerCSS","innerTextOnly","textOnly","A",true
+"JS_DOM","C1","Which API improves performance by batching DOM updates?","DocumentFragment","DOMParser","HTMLRewriter","DOMBatcher","A",true
+"JS_DOM","C2","Which technique reduces reflows when adding many nodes?","Use fragments/virtual DOM and minimize layout thrashing","Set innerHTML per node in a loop of 10k","Force sync layout reads each time","Use alert loops","A",true
+"JS_EVENTS","A1","Which adds a click listener?","element.addEventListener('click', fn)","element.on('click', fn)","listen('click')","onClick=fn()","A",true
+"JS_EVENTS","A2","Which stops default action?","event.preventDefault()","event.stopAll()","event.cancel()","event.off()","A",true
+"JS_EVENTS","B1","What is event delegation?","Attaching one handler high in DOM to handle child events","Handling only capture","Blocking all events","Using timers","A",true
+"JS_EVENTS","B2","Which phases do DOM events have?","Capture, target, bubble","Begin, middle, end","Up, down","Request, response","A",true
+"JS_EVENTS","C1","Which is true about passive listeners?","They signal that listener won't call preventDefault on touch/scroll","They capture by default","They stop bubbling","They are async","A",true
+"JS_EVENTS","C2","Which improves performance of frequent events?","Throttling/debouncing","Busy loops","Alert debugging","Synchronous XHR","A",true
+"JS_WEB_APIS","A1","Which API fetches resources over HTTP?","fetch","openFile","socket()","db.query","A",true
+"JS_WEB_APIS","A2","Which returns a Response object's status code?","response.status","response.code","response.state","response.okCode","A",true
+"JS_WEB_APIS","B1","How to parse JSON from fetch response?","await res.json()","await res.textJSON()","JSON.parse(res)","res.toJSON()","A",true
+"JS_WEB_APIS","B2","Which header allows CORS for all origins?","Access-Control-Allow-Origin: *","Allow-All: true","CORS: yes","Origin: *","A",true
+"JS_WEB_APIS","C1","Which API aborts a fetch?","AbortController","CancelToken","Stopper","fetch.stop()","A",true
+"JS_WEB_APIS","C2","Which option sends credentials with fetch?","credentials: 'include'","withCredentials: true","auth: true","cookies: true","A",true
+"JS_STORAGE","A1","Which stores a simple key/value in browser?","localStorage.setItem","fs.writeFile","db.save","cookie.save","A",true
+"JS_STORAGE","A2","Which persists only until browser tab closes?","sessionStorage","localStorage","fileStorage","diskStorage","A",true
+"JS_STORAGE","B1","Which is a secure cookie attribute to mitigate CSRF?","SameSite","ReadOnly","SecureOnly","NoSave","A",true
+"JS_STORAGE","B2","Which storage size is typically larger?","IndexedDB","sessionStorage","localStorage","cookie","A",true
+"JS_STORAGE","C1","Which API provides transactional key-value storage?","IndexedDB","localStorage","FileSystemAPI","CacheOnly","A",true
+"JS_STORAGE","C2","Which statement about localStorage is correct?","Synchronous API; large writes can block the main thread","Asynchronous by spec","Encrypted by default","Unlimited size","A",true
+"JS_PERFORMANCE","A1","Which reduces script size for faster loads?","Minification","Duplication","Obfuscation only","Whitespace padding","A",true
+"JS_PERFORMANCE","A2","Which metric measures time to first render?","First Contentful Paint (FCP)","Frames Per Second","Heap Size","CPU Temp","A",true
+"JS_PERFORMANCE","B1","Which technique splits code by route?","Code-splitting","Code-doubling","Code-joining","Code-freezing","A",true
+"JS_PERFORMANCE","B2","Which API profiles JS performance in browsers?","Performance API","CPU API","Thread API","RenderTimer","A",true
+"JS_PERFORMANCE","C1","Which reduces layout thrashing?","Batch reads then writes, avoid sync style reads after writes","Force sync getBoundingClientRect each loop","Full reflow per node","Randomize order","A",true
+"JS_PERFORMANCE","C2","Which improves long-task responsiveness?","Yield with requestIdleCallback / async chunking","While(true) computations","setTimeout(0) only","alert during loop","A",true
+"JS_TESTING","A1","Which assertion passes if value is true?","expect(value).toBe(true)","assertTrue(value) (JS default)","value == 1 only","console.ok(value)","A",true
+"JS_TESTING","A2","Which runs a test in Jest?","test('name', fn) or it('name', fn)","runTest()","describeOnly()","suite()","A",true
+"JS_TESTING","B1","Which isolates units by replacing dependencies?","Mocking","Mining","Merging","Monolithing","A",true
+"JS_TESTING","B2","Which matches partial objects in Jest?","expect.objectContaining","expect.partialMatch","expect.containsObject","expect.someOf","A",true
+"JS_TESTING","C1","Which improves test reliability?","Avoid test interdependence and shared global state","Rely on timeouts","Use real network always","Skip teardown","A",true
+"JS_TESTING","C2","Which is best for end-to-end browser testing?","Playwright/Cypress/Puppeteer","Mocha only","Node REPL","curl","A",true
+"JS_TOOLING","A1","Which installs a package locally?","npm install package","apt-get package","pip package","composer require","A",true
+"JS_TOOLING","A2","Which linter is common in JS projects?","ESLint","Clippy","Bandit","Pylint","A",true
+"JS_TOOLING","B1","Which tool bundles modules for the browser?","Webpack/Vite/Rollup","Make only","Maven","Ant","A",true
+"JS_TOOLING","B2","Which formats code automatically?","Prettier","Beautify by hand","Gofmt","Autopep8","A",true
+"JS_TOOLING","C1","Which improves dev builds speed via HMR?","Vite / Webpack HMR","Rebuild everything each save","FTP upload","No cache","A",true
+"JS_TOOLING","C2","Which ensures reproducible installs?","Lockfiles (package-lock.json/pnpm-lock.yaml)","Random versions","Global installs only","No versioning","A",true
+"TS_BASICS","A1","TypeScript adds what to JavaScript?","Static typing","Kernel drivers","SQL engine","Image editor","A",true
+"TS_BASICS","A2","Which file extension is TypeScript source?",".ts",".java",".jsx",".py","A",true
+"TS_BASICS","B1","Which defines a shape of an object?","interface","typedef","schema","form","A",true
+"TS_BASICS","B2","Which narrows union types at runtime?","Type guards","Typecasting","Coercion","Duck typing only","A",true
+"TS_BASICS","C1","Which enables generic functions?","Type parameters <T>","new generic()","macro<T>","auto type","A",true
+"TS_BASICS","C2","Which config controls TS compiler options?","tsconfig.json","package.ts","ts-opts.json","config.ts","A",true
+"JS_SECURITY","A1","Which is a common web security issue mitigated by escaping output?","XSS","NTP drift","GPU overheating","Battery drain","A",true
+"JS_SECURITY","A2","Which header helps defend against clickjacking?","X-Frame-Options / CSP frame-ancestors","X-Click-Stop","No-Frame","Frame-Block","A",true
+"JS_SECURITY","B1","Which prevents sending cookies with cross-site requests?","SameSite=Strict/Lax","HttpOnly=Off","Proxy-Only","No-CORS","A",true
+"JS_SECURITY","B2","Which is safer for secrets in browser apps?","Store minimally, avoid localStorage; prefer HttpOnly cookies server-side","localStorage tokens always","Embed in JS code","URL query always","A",true
+"JS_SECURITY","C1","Which CSP directive controls allowed script sources?","script-src","img-src","style-src","font-src","A",true
+"JS_SECURITY","C2","Which best practice reduces supply-chain risk?","Pin versions and use integrity checks (SRI)","Use random GitHub repos","Disable audits","Globally trust all","A",true
+

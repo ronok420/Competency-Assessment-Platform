@@ -2,7 +2,7 @@ import { generateResponse } from '../../lib/responseFormate.js';
 import fs from 'fs';
 import { findMissingCompetencyCodes } from '../../utils/questionUtils.js';
 import { createQuestion, listQuestions, getQuestionById, updateQuestion, softDeleteQuestion } from './question.service.js';
-import { bulkCreateQuestions, parseBulkQuestionsJsonFile, getQuestionCountsByLevel } from './question.bulk.service.js';
+import { bulkCreateQuestions, parseBulkQuestionsJsonFile, parseBulkQuestionsCsvFile, getQuestionCountsByLevel } from './question.bulk.service.js';
 
 export const createQuestionController = async (req, res) => {
   try {
@@ -66,7 +66,11 @@ export const bulkUploadQuestionsController = async (req, res) => {
     let items;
     if (req.files && req.files.file && req.files.file[0]) {
       const file = req.files.file[0];
-      items = await parseBulkQuestionsJsonFile(file.path);
+      if (file.mimetype === 'text/csv' || file.originalname.toLowerCase().endsWith('.csv')) {
+        items = await parseBulkQuestionsCsvFile(file.path);
+      } else {
+        items = await parseBulkQuestionsJsonFile(file.path);
+      }
       // best-effort cleanup
       fs.unlink(file.path, () => {});
     } else if (Array.isArray(req.body)) {
