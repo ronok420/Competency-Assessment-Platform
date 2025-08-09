@@ -9,11 +9,11 @@ import {
 
 export const createCompetencyController = async (req, res) => {
   try {
-    const { name, description, code } = req.body;
-    if (!name || !description || !code) {
-      return generateResponse(res, 400, false, 'name, description and code are required');
+    const { name, description } = req.body;
+    if (!name || !description) {
+      return generateResponse(res, 400, false, 'name and description are required');
     }
-    const item = await createCompetency({ name, description, code });
+    const item = await createCompetency({ name, description });
     return generateResponse(res, 201, true, 'Competency created successfully', item);
   } catch (error) {
     return generateResponse(res, 500, false, error.message || 'Failed to create competency');

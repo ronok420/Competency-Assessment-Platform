@@ -1,8 +1,8 @@
 import Competency from './competency.model.js';
 import { createPaginationInfo } from '../../lib/pagination.js';
 
-export const createCompetency = async ({ name, description, code }) => {
-  const competency = await Competency.create({ name, description, code });
+export const createCompetency = async ({ name, description }) => {
+  const competency = await Competency.create({ name, description });
   return competency;
 };
 

@@ -43,7 +43,7 @@ const userMiddleware = (req, res, next) => {
   const { role } = req.user;
 
   if (role !== "USER") {
-    return generateResponse(res, 403, false, 'User access only', null);
+    return generateResponse(res, 403, false, 'Student access only', null);
   }
 
   next();

@@ -5,6 +5,9 @@ import {
   getQuestionById,
   updateQuestion,
   softDeleteQuestion,
+  bulkCreateQuestions,
+  parseBulkQuestionsJsonFile,
+  getQuestionCountsByLevel,
 } from './question.service.js';
 
 export const createQuestionController = async (req, res) => {
@@ -60,6 +63,39 @@ export const deleteQuestionController = async (req, res) => {
   } catch (error) {
     const status = /not found/i.test(error.message) ? 404 : 500;
     return generateResponse(res, status, false, error.message || 'Failed to deactivate question');
+  }
+};
+
+export const bulkUploadQuestionsController = async (req, res) => {
+  try {
+    // Accept either JSON payload in body or JSON file via multipart field 'file'
+    let items;
+    if (req.files && req.files.file && req.files.file[0]) {
+      const file = req.files.file[0];
+      items = await parseBulkQuestionsJsonFile(file.path);
+    } else if (Array.isArray(req.body)) {
+      items = req.body;
+    } else if (req.body && req.body.items) {
+      items = req.body.items;
+    } else {
+      return generateResponse(res, 400, false, 'Provide items array in body or upload a JSON file in field "file"');
+    }
+
+    const result = await bulkCreateQuestions(items);
+    const status = result.errors.length ? 207 : 201; // 207 Multi-Status if partial errors
+    return generateResponse(res, status, true, 'Bulk upload processed', result);
+  } catch (error) {
+    return generateResponse(res, 500, false, error.message || 'Failed to process bulk upload');
+  }
+};
+
+export const getQuestionCountsByLevelController = async (req, res) => {
+  try {
+    const { isActive } = req.query;
+    const data = await getQuestionCountsByLevel({ isActive });
+    return generateResponse(res, 200, true, 'Question counts by level', data);
+  } catch (error) {
+    return generateResponse(res, 500, false, error.message || 'Failed to fetch counts');
   }
 };
 
