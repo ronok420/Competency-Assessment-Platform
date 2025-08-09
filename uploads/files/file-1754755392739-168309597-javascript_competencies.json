@@ -1,0 +1,114 @@
+[
+  {
+    "name": "JavaScript Fundamentals",
+    "description": "Core language concepts: syntax, statements, expressions, and execution model.",
+    "code": "JS_CORE"
+  },
+  {
+    "name": "Variables & Data Types",
+    "description": "let/const, primitives vs objects, type coercion, and immutability basics.",
+    "code": "JS_TYPES"
+  },
+  {
+    "name": "Operators & Expressions",
+    "description": "Arithmetic, comparison, logical, ternary, nullish coalescing, and optional chaining.",
+    "code": "JS_OPERATORS"
+  },
+  {
+    "name": "Control Flow",
+    "description": "if/else, switch, loops, iteration protocols, and early returns.",
+    "code": "JS_CONTROL_FLOW"
+  },
+  {
+    "name": "Functions & Scope",
+    "description": "Function declarations/expressions, arrow functions, scope, closures, and this-binding.",
+    "code": "JS_FUNCTIONS_SCOPE"
+  },
+  {
+    "name": "Arrays",
+    "description": "Creation, iteration, mutation vs non-mutation, higher-order methods (map/filter/reduce).",
+    "code": "JS_ARRAYS"
+  },
+  {
+    "name": "Objects & Prototypes",
+    "description": "Object creation, property descriptors, prototype chain, and class syntax.",
+    "code": "JS_OBJECTS_PROTOS"
+  },
+  {
+    "name": "ES6+ Syntax",
+    "description": "Destructuring, rest/spread, template literals, symbols, iterators, and generators.",
+    "code": "JS_ESNEXT"
+  },
+  {
+    "name": "Modules",
+    "description": "ES modules vs CommonJS, import/export patterns, and module resolution.",
+    "code": "JS_MODULES"
+  },
+  {
+    "name": "Error Handling & Debugging",
+    "description": "try/catch/finally, error types, stack traces, and debugging techniques.",
+    "code": "JS_ERRORS_DEBUG"
+  },
+  {
+    "name": "Asynchronous JavaScript",
+    "description": "Callbacks, event-driven patterns, timers, and microtask vs macrotask queues.",
+    "code": "JS_ASYNC"
+  },
+  {
+    "name": "Promises & Async/Await",
+    "description": "Promise lifecycle, chaining, error propagation, and async/await best practices.",
+    "code": "JS_PROMISES_ASYNC"
+  },
+  {
+    "name": "Event Loop & Concurrency",
+    "description": "Call stack, task queues, rendering, and starvation/ordering pitfalls.",
+    "code": "JS_EVENT_LOOP"
+  },
+  {
+    "name": "DOM Manipulation",
+    "description": "Selecting, traversing, creating, and updating DOM nodes efficiently.",
+    "code": "JS_DOM"
+  },
+  {
+    "name": "Events",
+    "description": "Event propagation, delegation, default actions, and custom events.",
+    "code": "JS_EVENTS"
+  },
+  {
+    "name": "Web APIs & Fetch",
+    "description": "Fetch API, Request/Response, CORS, aborting, and streaming basics.",
+    "code": "JS_WEB_APIS"
+  },
+  {
+    "name": "Storage & Cookies",
+    "description": "localStorage/sessionStorage, cookies, SameSite, and persistence strategies.",
+    "code": "JS_STORAGE"
+  },
+  {
+    "name": "Performance & Optimization",
+    "description": "Big-O intuition, memory, repaint/reflow, and code-splitting strategies.",
+    "code": "JS_PERFORMANCE"
+  },
+  {
+    "name": "Testing",
+    "description": "Unit and integration testing concepts with Jest and testing best practices.",
+    "code": "JS_TESTING"
+  },
+  {
+    "name": "Tooling & Build",
+    "description": "NPM/Yarn, scripts, bundlers (Webpack/Vite), linters, and formatters.",
+    "code": "JS_TOOLING"
+  },
+  {
+    "name": "TypeScript Basics",
+    "description": "Types, interfaces, generics, narrowing, and interop with JavaScript codebases.",
+    "code": "TS_BASICS"
+  },
+  {
+    "name": "Security in JavaScript",
+    "description": "Common vulnerabilities (XSS/CSRF), sanitization, and safe coding patterns.",
+    "code": "JS_SECURITY"
+  }
+]
+
+

@@ -6,7 +6,9 @@ import {
   getCompetencyByIdController,
   updateCompetencyController,
   deleteCompetencyController,
+  bulkUploadCompetenciesController,
 } from './competency.controller.js';
+import { multerUpload } from '../../core/middlewares/multer.js';
 
 const router = express.Router();
 
@@ -15,6 +17,9 @@ router.get('/', verifyToken, adminMiddleware, listCompetenciesController);
 router.get('/:id', verifyToken, adminMiddleware, getCompetencyByIdController);
 router.patch('/:id', verifyToken, adminMiddleware, updateCompetencyController);
 router.delete('/:id', verifyToken, adminMiddleware, deleteCompetencyController);
+
+// Bulk upload competencies (auto-generates code when not provided)
+router.post('/bulk', verifyToken, adminMiddleware, multerUpload([{ name: 'file', maxCount: 1 }]), bulkUploadCompetenciesController);
 
 export default router;
 

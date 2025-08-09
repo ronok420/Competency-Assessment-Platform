@@ -5,15 +5,19 @@ import {
   getCompetencyById,
   updateCompetency,
   softDeleteCompetency,
+  bulkCreateCompetencies,
+  parseBulkCompetenciesJsonFile,
 } from './competency.service.js';
+import fs from 'fs';
 
 export const createCompetencyController = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    if (!name || !description) {
-      return generateResponse(res, 400, false, 'name and description are required');
+    const { name, description, code } = req.body;
+    if (!name || !description || !code) {
+      return generateResponse(res, 400, false, 'name, description and code are required');
     }
-    const item = await createCompetency({ name, description });
+    const normalizedCode = String(code).trim().toUpperCase();
+    const item = await createCompetency({ name, description, code: normalizedCode });
     return generateResponse(res, 201, true, 'Competency created successfully', item);
   } catch (error) {
     return generateResponse(res, 500, false, error.message || 'Failed to create competency');
@@ -60,6 +64,29 @@ export const deleteCompetencyController = async (req, res) => {
   } catch (error) {
     const status = /not found/i.test(error.message) ? 404 : 500;
     return generateResponse(res, status, false, error.message || 'Failed to deactivate competency');
+  }
+};
+
+export const bulkUploadCompetenciesController = async (req, res) => {
+  try {
+    let items;
+    if (req.files && req.files.file && req.files.file[0]) {
+      const file = req.files.file[0];
+      items = await parseBulkCompetenciesJsonFile(file.path);
+      fs.unlink(file.path, () => {});
+    } else if (Array.isArray(req.body)) {
+      items = req.body;
+    } else if (req.body && req.body.items) {
+      items = req.body.items;
+    } else {
+      return generateResponse(res, 400, false, 'Provide items array in body or upload a JSON file in field "file"');
+    }
+
+    const result = await bulkCreateCompetencies(items);
+    const httpStatus = result.errors.length ? 207 : 201;
+    return generateResponse(res, httpStatus, true, 'Bulk competencies upload processed', result);
+  } catch (error) {
+    return generateResponse(res, 500, false, error.message || 'Failed to process bulk competencies upload');
   }
 };
 
