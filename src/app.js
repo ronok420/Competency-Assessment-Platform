@@ -64,8 +64,10 @@ const uploadPath = path.resolve(__dirname, "../uploads");
 app.use("/uploads", express.static(uploadPath));
 // Set up welcome route
 app.get("/", (req, res) => {
-  res.status(200).send("Welcome to Sanse Fashion API");
+  res.status(200).send("welcome to competency platform API");
 });
+
+
 // Set up API routes
 app.use('/api', appRouter);
 
