@@ -6,6 +6,8 @@ import questionRoutes from '../../entities/question/question.routes.js';
 import assessmentsRoutes from '../../entities/assessments/assessments.routes.js';
 import certificateRoutes from '../../entities/certificates/certificate.routes.js';
 import proctorRoutes from '../../entities/assessments/proctor.routes.js';
+import adminDashboardRoutes from '../../entities/admin/dashboard/dashboard.routes.js';
+import supervisorRoutes from '../../entities/supervisor/supervisor.routes.js';
 //import dashboardRoutes from '../../entities/dashboard/dashboard.routes.js';
 
 const router = express.Router();
@@ -17,6 +19,8 @@ router.use('/v1/questions', questionRoutes);
 router.use('/v1/assessments', assessmentsRoutes);
 router.use('/v1/certificates', certificateRoutes);
 router.use('/v1/proctor', proctorRoutes);
+router.use('/v1/admin/dashboard', adminDashboardRoutes);
+router.use('/v1/supervisor', supervisorRoutes);
 //router.use('/v1/admin/dashboard', dashboardRoutes);
 
 export default router;

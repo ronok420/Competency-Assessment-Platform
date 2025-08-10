@@ -74,6 +74,24 @@ const userAdminMiddleware = (req, res, next) => {
   next();
 };
 
+const supervisorMiddleware = (req, res, next) => {
+  if (!req.user) {
+    return generateResponse(res, 401, false, 'Unauthorized: Supervisor not found', null);
+  }
+  const { role } = req.user;
+  if (role !== 'SUPERVISOR') {
+    return generateResponse(res, 403, false, 'Supervisor access only', null);
+  }
+  next();
+};
 
-export{ userMiddleware, adminMiddleware,  userAdminMiddleware };
+const supervisorOrAdminMiddleware = (req, res, next) => {
+  const { role } = req.user || {};
+  if (!['SUPERVISOR', 'ADMIN'].includes(role)) {
+    return generateResponse(res, 403, false, 'Supervisor or Admin access only', null);
+  }
+  next();
+};
+
+export{ userMiddleware, adminMiddleware,  userAdminMiddleware, supervisorMiddleware, supervisorOrAdminMiddleware };
 
