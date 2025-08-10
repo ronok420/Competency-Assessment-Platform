@@ -1,5 +1,5 @@
 const RoleType = Object.freeze({
-  USER: 'USER',
+  STUDENT: 'STUDENT',
   ADMIN: 'ADMIN',
   SUPERVISOR: 'SUPERVISOR'
 });

@@ -13,8 +13,8 @@ const UserSchema = new mongoose.Schema(
     dob: { type: Date, default: null },
     role: {
       type: String,
-      default: RoleType.USER,
-      enum: [RoleType.USER, RoleType.ADMIN, RoleType.SUPERVISOR],
+      default: RoleType.STUDENT,
+      enum: [RoleType.STUDENT, RoleType.ADMIN, RoleType.SUPERVISOR],
     },
     bio: { type: String, default: '' },
     profileImage: { type: String, default: '' },

@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Local student guard to ensure req.user.role === USER
 // const studentOnly = (req, res, next) => {
-//   if (req.user && req.user.role === RoleType.USER) return next();
+//   if (req.user && req.user.role === RoleType.STUDENT) return next();
 //   return res.status(403).json({ status: false, message: 'Forbidden: Students only' });
 // };
 

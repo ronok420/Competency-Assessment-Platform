@@ -21,6 +21,8 @@ const QuestionSchema = new mongoose.Schema(
     text: { type: String, required: true, trim: true },
     options: { type: [QuestionOptionSchema], validate: v => Array.isArray(v) && v.length >= 2 },
     correctOptionKey: { type: String, required: true, trim: true },
+    // Optional per-question time limit in seconds (admin-configurable). Falls back to default if undefined
+    timeLimitSec: { type: Number, min: 10, max: 1800 },
     isActive: { type: Boolean, default: true },
   },
   { timestamps: true }

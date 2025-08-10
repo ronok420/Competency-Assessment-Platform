@@ -2,10 +2,12 @@ import Question from './question.model.js';
 import { createPaginationInfo } from '../../lib/pagination.js';
 import { validateOptions, buildQuestionFilter, whitelistQuestionUpdates, resolveCompetencyPair } from '../../utils/questionUtils.js';
 
-export const createQuestion = async ({ competencyId, competencyCode, level, text, options, correctOptionKey }) => {
+export const createQuestion = async ({ competencyId, competencyCode, level, text, options, correctOptionKey, timeLimitSec }) => {
   validateOptions(options, correctOptionKey);
   const pair = await resolveCompetencyPair({ competencyId, competencyCode });
-  const question = await Question.create({ ...pair, level, text, options, correctOptionKey });
+  const payload = { ...pair, level, text, options, correctOptionKey };
+  if (timeLimitSec !== undefined) payload.timeLimitSec = Number(timeLimitSec);
+  const question = await Question.create(payload);
   return question;
 };
 

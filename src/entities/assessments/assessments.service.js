@@ -3,10 +3,12 @@ import TestSession from './testSession.model.js';
 import Question from '../question/question.model.js';
 import User from '../auth/auth.model.js';
 import { computeStepOutcome, levelPairForNextStep } from './computeStepOutcome.js';
+import { issueCertificate } from '../certificates/certificate.service.js';
 
 const QUESTIONS_PER_LEVEL = 22;
 const QUESTIONS_PER_STEP = 44;
-const SECONDS_PER_QUESTION = 60; // default: 1 minute per question
+const DEFAULT_SECONDS_PER_QUESTION = 60; // default: 1 minute per question
+const DEFAULT_STEP_DURATION_FALLBACK = DEFAULT_SECONDS_PER_QUESTION * QUESTIONS_PER_STEP;
 
 const pickRandomActiveQuestions = async (level, count) => {
   const docs = await Question.aggregate([
@@ -64,7 +66,9 @@ export const startAssessmentService = async (userId) => {
   const combined = shuffleArray([...a1, ...a2]);
   const questionIds = combined.map(q => q._id);
 
-  const stepDurationSec = SECONDS_PER_QUESTION * QUESTIONS_PER_STEP;
+  // Derive step duration: per-question time if provided, else default per-question
+  const combinedWithTime = combined.map((q) => ({ ...q, timeLimitSec: q.timeLimitSec || DEFAULT_SECONDS_PER_QUESTION }));
+  const stepDurationSec = combinedWithTime.reduce((sum, q) => sum + (q.timeLimitSec || DEFAULT_SECONDS_PER_QUESTION), 0) || DEFAULT_STEP_DURATION_FALLBACK;
   const endsAt = new Date(Date.now() + stepDurationSec * 1000);
 
   const session = await TestSession.create({
@@ -187,6 +191,17 @@ export const submitStepService = async (userId, sessionId, answers) => {
   }
   await user.save({ validateBeforeSave: false });
 
+  // Certificate issuance: if journey is complete and a final level exists
+  const isJourneyComplete = outcome.userStatus === 'Failed' || !current.canProceed;
+  const stepNumber = current.stepNumber;
+  let finalLevel = current.awardedLevel || null;
+  if (outcome.userStatus === 'Failed' && stepNumber === 1) {
+    finalLevel = null; // no certificate on step 1 fail
+  }
+  if (isJourneyComplete && finalLevel) {
+    await issueCertificate(userId, session._id, finalLevel);
+  }
+
   return {
     scorePercent: current.scorePercent,
     awardedLevel: current.awardedLevel,
@@ -238,7 +253,8 @@ export const startNextStepService = async (userId, sessionId) => {
   const combined = shuffleArray([...l1, ...l2]);
   const questionIds = combined.map(q => q._id);
 
-  const stepDurationSec = SECONDS_PER_QUESTION * QUESTIONS_PER_STEP;
+  const combinedWithTime = combined.map((q) => ({ ...q, timeLimitSec: q.timeLimitSec || DEFAULT_SECONDS_PER_QUESTION }));
+  const stepDurationSec = combinedWithTime.reduce((sum, q) => sum + (q.timeLimitSec || DEFAULT_SECONDS_PER_QUESTION), 0) || DEFAULT_STEP_DURATION_FALLBACK;
   const endsAt = new Date(Date.now() + stepDurationSec * 1000);
 
   session.steps.push({

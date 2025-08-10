@@ -19,7 +19,7 @@ router.get('/:id', verifyToken, adminMiddleware, getQuestionByIdController);
 router.patch('/:id', verifyToken, adminMiddleware, updateQuestionController);
 router.delete('/:id', verifyToken, adminMiddleware, deleteQuestionController);
 
-// Bulk upload: accept JSON file via multipart field 'file' or JSON array in body
+// Bulk upload: accept JSON file via multipart field 'file' or CSV or JSON array in body
 router.post('/bulk', verifyToken, adminMiddleware, multerUpload([{ name: 'file', maxCount: 1 }]), bulkUploadQuestionsController);
 
 // Diagnostics: counts by level (optionally filter by isActive)

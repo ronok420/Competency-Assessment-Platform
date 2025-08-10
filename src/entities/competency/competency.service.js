@@ -1,6 +1,7 @@
 import Competency from './competency.model.js';
 import { createPaginationInfo } from '../../lib/pagination.js';
 import { readJsonFile, extractItemsArray } from '../../utils/json.js';
+import { parseCsvFileToObjects } from '../../utils/csv.js';
 import { buildBulkResult, pushBulkError, applyBulkWriteErrors } from '../../utils/bulk.js';
 import { normalizeString, normalizeUpper } from '../../utils/normalize.js';
 
@@ -103,6 +104,17 @@ export const bulkCreateCompetencies = async (items = []) => {
 export const parseBulkCompetenciesJsonFile = async (filePath) => {
   const parsed = await readJsonFile(filePath);
   return extractItemsArray(parsed);
+};
+
+export const parseBulkCompetenciesCsvFile = async (filePath) => {
+  // Expected headers: name, description, code, isActive (optional)
+  const records = await parseCsvFileToObjects(filePath);
+  return records.map((r) => ({
+    name: r.name,
+    description: r.description,
+    code: r.code ? String(r.code).trim().toUpperCase() : undefined,
+    isActive: r.isActive === undefined || r.isActive === '' ? true : String(r.isActive).toLowerCase() === 'true',
+  }));
 };
 
 

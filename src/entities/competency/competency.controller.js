@@ -7,6 +7,7 @@ import {
   softDeleteCompetency,
   bulkCreateCompetencies,
   parseBulkCompetenciesJsonFile,
+  parseBulkCompetenciesCsvFile,
 } from './competency.service.js';
 import fs from 'fs';
 
@@ -72,7 +73,11 @@ export const bulkUploadCompetenciesController = async (req, res) => {
     let items;
     if (req.files && req.files.file && req.files.file[0]) {
       const file = req.files.file[0];
-      items = await parseBulkCompetenciesJsonFile(file.path);
+      if (file.mimetype === 'text/csv' || file.originalname.toLowerCase().endsWith('.csv')) {
+        items = await parseBulkCompetenciesCsvFile(file.path);
+      } else {
+        items = await parseBulkCompetenciesJsonFile(file.path);
+      }
       fs.unlink(file.path, () => {});
     } else if (Array.isArray(req.body)) {
       items = req.body;

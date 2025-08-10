@@ -18,7 +18,8 @@ router.get('/:id', verifyToken, adminMiddleware, getCompetencyByIdController);
 router.patch('/:id', verifyToken, adminMiddleware, updateCompetencyController);
 router.delete('/:id', verifyToken, adminMiddleware, deleteCompetencyController);
 
-// Bulk upload competencies (auto-generates code when not provided)
+// Bulk upload competencies for CSV and JSON files
+// Accepts multipart field 'file' for file uploads
 router.post('/bulk', verifyToken, adminMiddleware, multerUpload([{ name: 'file', maxCount: 1 }]), bulkUploadCompetenciesController);
 
 export default router;

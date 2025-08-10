@@ -42,7 +42,7 @@ const userMiddleware = (req, res, next) => {
   }
   const { role } = req.user;
 
-  if (role !== "USER") {
+  if (role !== "STUDENT") {
     return generateResponse(res, 403, false, 'Student access only', null);
   }
 
@@ -67,9 +67,9 @@ const adminMiddleware = (req, res, next) => {
 const userAdminMiddleware = (req, res, next) => {
   const { role } = req.user || {};
 
-  if (![RoleType.USER, RoleType.ADMIN].includes(role))
+  if (![RoleType.STUDENT, RoleType.ADMIN].includes(role))
  {
-    return generateResponse(res, 403, false, 'User or Admin access only', null);
+    return generateResponse(res, 403, false, 'Student or Admin access only', null);
   }
   next();
 };

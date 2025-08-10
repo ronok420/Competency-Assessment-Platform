@@ -6,11 +6,11 @@ import { bulkCreateQuestions, parseBulkQuestionsJsonFile, parseBulkQuestionsCsvF
 
 export const createQuestionController = async (req, res) => {
   try {
-    const { competencyId, competencyCode, level, text, options, correctOptionKey } = req.body;
+    const { competencyId, competencyCode, level, text, options, correctOptionKey, timeLimitSec } = req.body;
     if ((!competencyId && !competencyCode) || !level || !text || !options || !correctOptionKey) {
       return generateResponse(res, 400, false, 'competencyId or competencyCode, level, text, options, and correctOptionKey are required');
     }
-    const item = await createQuestion({ competencyId, competencyCode, level, text, options, correctOptionKey });
+    const item = await createQuestion({ competencyId, competencyCode, level, text, options, correctOptionKey, timeLimitSec });
     return generateResponse(res, 201, true, 'Question created successfully', item);
   } catch (error) {
     return generateResponse(res, 500, false, error.message || 'Failed to create question');

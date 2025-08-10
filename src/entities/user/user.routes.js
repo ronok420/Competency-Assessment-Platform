@@ -20,6 +20,8 @@ router.get("/all-supervisors", verifyToken, adminMiddleware, getAllSupervisorsCo
 // user
 router.get("/:id", verifyToken, getUserByIdController);
 router.put("/:id", verifyToken, updateUserController);
+// Admin-only: upgrade role (e.g., STUDENT -> SUPERVISOR)
+router.patch("/:id", verifyToken, adminMiddleware, updateUserController);
 router.delete("/:id", verifyToken, adminMiddleware,  deleteUserController);
 
 // avatar
