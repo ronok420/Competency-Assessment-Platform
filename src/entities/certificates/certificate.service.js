@@ -25,7 +25,7 @@ export const issueCertificate = async (userId, testSessionId, level) => {
   const cert = await Certificate.create({ userId, testSessionId, level, certificateUID, pdfUrl: filePath });
   await User.findByIdAndUpdate(userId, { 'assessmentStatus.certificateId': cert._id }, { new: true });
 
-  const verifyUrl = `${process.env.PUBLIC_BASE_URL || ''}/api/v1/certificates/verify/${certificateUID}`;
+  const verifyUrl = `${process.env.PUBLIC_BASE_URL || ''}/certificates/verify/${certificateUID}`;
   await sendEmail({
     to: user?.email,
     subject: 'Your Certificate is Ready',
