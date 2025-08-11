@@ -4,6 +4,10 @@ A **Node.js + Express + MongoDB** backend for a **multi-stage digital competency
 It supports **authentication**, **content management**, **adaptive assessments**, **automated certification**, **secure exam features**, **video proctoring**, and **role-based dashboards**.
 
 ---
+## Base URL
+
+- **Live:** [https://competency-assessment-platform.onrender.com/api/v1](https://competency-assessment-platform.onrender.com/api/v1)  
+- **Local:** http://localhost:5007/api/v1
 
 ##  Features
 
